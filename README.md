@@ -11,12 +11,18 @@ npx skills add ucas-cn/datahub-cli-skill -y -g
 ## 结构
 
 ```text
-skills -> ../cli/skills   # 软链接，指向 datahub-cli 源码仓库的 skills 目录
+skills/datahub-open-api/SKILL.md
 ```
 
 Skill 单一事实来源为 `cli` 源码仓库（内网 GitLab）的 `cli/skills/` 物理目录；本仓库（GitHub
-`ucas-cn/datahub-cli-skill`）的 `skills` 为软链接，指向该目录。修改 Skill 直接改 `cli/skills/`
-后，在本仓库执行 `git add -A && git commit && git push` 即发布。
+`ucas-cn/datahub-cli-skill`）保存 `skills/` 的**物理拷贝**，供 `npx skills add` 独立安装。
 
-> 注意：本仓库的 `skills` 是符号链接，独立 clone 本仓库（未同时拉取 `cli` 源码仓库）时
-> 软链接目标不可达，`npx skills add` 需在具备 `cli` 源码的完整工作区（如主仓库 `bom-easy`）中验证。
+## 维护
+
+修改 Skill 后，从 `cli/skills/` 拷贝到本仓库并提交推送：
+
+```bash
+cd cli-skills
+rm -rf skills && cp -R ../cli/skills skills
+git add -A && git commit -m "chore: 同步 datahub-cli skill" && git push
+```
