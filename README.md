@@ -11,8 +11,11 @@ npx skills add ucas-cn/datahub-cli-skill -y -g
 ## 结构
 
 ```text
-skills/datahub-open-api/SKILL.md
+skills/datahub-cli/SKILL.md
 ```
+
+`datahub-cli` Skill 覆盖 `datahub` 命令的完整能力面：Open API（`/api/open`）与 API Hub
+（`/api/hub`）两套接口的发现、说明与调用，以及认证/配置管理。
 
 本仓库 `skills/` 是 Skill 的**唯一事实来源**，供 `npx skills add` 独立安装。
 
